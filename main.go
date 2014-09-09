@@ -24,11 +24,12 @@ func worker(cmdChan chan string, wg *sync.WaitGroup) {
 		}
 		cmd := exec.Command(cmdName, cmdArgs)
 		/*
-			if err := cmd.Start(); err != nil {
-				log.Fatalf("cmd.Start " + cmdString + " %v")
-			}
-			//... Wait()
-			//... Output()
+			http://stackoverflow.com/questions/10385551/get-exit-code-go
+				if err := cmd.Start(); err != nil {
+					log.Fatalf("cmd.Start " + cmdString + " %v")
+				}
+				//... Wait()
+				//... Output()
 		*/
 		if err := cmd.Run(); err != nil {
 			log.Println(1, cmdString, err)
